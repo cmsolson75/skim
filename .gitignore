@@ -1,0 +1,33 @@
+# Binaries
+/skim
+
+# Build artifacts
+*.exe
+*.out
+*.o
+*.a
+*.so
+
+# Dependency directories
+vendor/
+
+# Test cache and coverage
+*.test
+*.cover
+*.coverprofile
+*.log
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Go build cache
+*.modcache
+
+# Config and editor files
+.idea/
+.vscode/
+*.swp
+
+# Output directories
+/out

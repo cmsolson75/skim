@@ -1,5 +1,7 @@
 package main
 
-func main() {
+import "github.com/cmsolson75/skim/internal/cmd"
 
+func main() {
+	cmd.Execute()
 }
