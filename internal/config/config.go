@@ -12,8 +12,6 @@ type Config struct {
 	OutputName  string   `mapstructure:"output_name"`
 	AllowedExts []string `mapstructure:"allowed_extensions"`
 	SkipDirs    []string `mapstructure:"skip_dirs"`
-	IncludeTree bool     `mapstructure:"include_tree"`
-	IncludeCloc bool     `mapstructure:"include_cloc"`
 }
 
 func LoadConfig() (*Config, error) {
@@ -27,13 +25,11 @@ func LoadConfig() (*Config, error) {
 	_ = viper.ReadInConfig() // optional
 
 	cfg := &Config{
-		InputDir:    viper.GetString("input-dir"),
-		OutputDir:   viper.GetString("output-dir"),
-		OutputName:  viper.GetString("output-name"),
-		AllowedExts: viper.GetStringSlice("allowed-extensions"),
-		SkipDirs:    viper.GetStringSlice("skip-dirs"),
-		IncludeTree: viper.GetBool("include_tree"),
-		IncludeCloc: viper.GetBool("include_cloc"),
+		InputDir:    viper.GetString("input_dir"),
+		OutputDir:   viper.GetString("output_dir"),
+		OutputName:  viper.GetString("output_name"),
+		AllowedExts: viper.GetStringSlice("allowed_extensions"),
+		SkipDirs:    viper.GetStringSlice("skip_dirs"),
 	}
 
 	// Validate required fields
@@ -57,10 +53,11 @@ func LoadConfig() (*Config, error) {
 }
 
 func setDefaults() {
-	viper.SetDefault("output-dir", "./out")
-	viper.SetDefault("output-name", "context.txt")
-	viper.SetDefault("allowed-extensions", []string{".go", ".py", ".yaml", ".txt"})
-	viper.SetDefault("skip-dirs", []string{".git", "__pycache__"})
-	viper.SetDefault("include_tree", false)
-	viper.SetDefault("include_cloc", false)
+	viper.SetDefault("input_dir", ".")
+	viper.SetDefault("output_dir", ".")
+	viper.SetDefault("output_name", "context.txt")
+	viper.SetDefault("allowed_extensions", []string{".go", ".py", ".yaml", ".txt"})
+	viper.SetDefault("skip_dirs", []string{".git", "__pycache__"})
+	viper.SetDefault("cloc", false)
+	viper.SetDefault("tree", false)
 }

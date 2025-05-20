@@ -9,6 +9,7 @@ import (
 	"github.com/cmsolson75/skim/internal/analyze"
 	"github.com/cmsolson75/skim/internal/config"
 	"github.com/cmsolson75/skim/internal/walker"
+	"github.com/spf13/viper"
 )
 
 type Service struct {
@@ -34,12 +35,12 @@ func (s *Service) Write(files []walker.FileData) error {
 	fmt.Fprintf(w, "Project Root: %s\n\n", s.cfg.InputDir)
 	w.Flush()
 
-	if s.cfg.IncludeCloc {
+	if viper.GetBool("cloc") {
 		fmt.Fprintln(w, "---- CLOC ----")
 		analyze.RunCloc(s.cfg.InputDir, w)
 		fmt.Fprintln(w)
 	}
-	if s.cfg.IncludeTree {
+	if viper.GetBool("tree") {
 		fmt.Fprintln(w, "---- TREE ----")
 		analyze.RunTree(s.cfg.InputDir, w)
 		fmt.Fprintln(w)

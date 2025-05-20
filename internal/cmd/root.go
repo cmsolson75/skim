@@ -40,10 +40,9 @@ func init() {
 	rootCmd.PersistentFlags().String("output-name", "", "Output file name")
 	rootCmd.PersistentFlags().StringSlice("allowed-extensions", nil, "Allowed file extensions (comma-separated)")
 	rootCmd.PersistentFlags().StringSlice("skip-dirs", nil, "Directories to skip")
-	rootCmd.PersistentFlags().Bool("include-cloc", false, "Include cloc output")
-	rootCmd.PersistentFlags().Bool("include-tree", false, "Include tree output")
 
-	// Bind to Viper
+	rootCmd.PersistentFlags().Bool("cloc", false, "Include cloc output")
+	rootCmd.PersistentFlags().Bool("tree", false, "Include tree output")
 	viper.BindPFlags(rootCmd.PersistentFlags())
 	viper.AutomaticEnv()
 }

@@ -1,8 +1,6 @@
 input_dir: ./
 output_dir: ./out
 output_name: context.txt
-include_tree: true
-include_cloc: true
 
 allowed_extensions:
   - .go
