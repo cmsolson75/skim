@@ -12,6 +12,8 @@ type Config struct {
 	OutputName  string   `mapstructure:"output_name"`
 	AllowedExts []string `mapstructure:"allowed_extensions"`
 	SkipDirs    []string `mapstructure:"skip_dirs"`
+	IncludeTree bool     `mapstructure:"include_tree"`
+	IncludeCloc bool     `mapstructure:"include_cloc"`
 }
 
 func LoadConfig() (*Config, error) {
@@ -30,6 +32,8 @@ func LoadConfig() (*Config, error) {
 		OutputName:  viper.GetString("output-name"),
 		AllowedExts: viper.GetStringSlice("allowed-extensions"),
 		SkipDirs:    viper.GetStringSlice("skip-dirs"),
+		IncludeTree: viper.GetBool("include_tree"),
+		IncludeCloc: viper.GetBool("include_cloc"),
 	}
 
 	// Validate required fields
@@ -57,4 +61,6 @@ func setDefaults() {
 	viper.SetDefault("output-name", "context.txt")
 	viper.SetDefault("allowed-extensions", []string{".go", ".py", ".yaml", ".txt"})
 	viper.SetDefault("skip-dirs", []string{".git", "__pycache__"})
+	viper.SetDefault("include_tree", false)
+	viper.SetDefault("include_cloc", false)
 }

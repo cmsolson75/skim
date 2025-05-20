@@ -35,12 +35,15 @@ var rootCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.PersistentFlags().String("input-dir", ".", "Directory to scan")
-	rootCmd.PersistentFlags().String("output-dir", ".", "Output directory")
-	rootCmd.PersistentFlags().String("output-name", "context.txt", "Output file name")
-	rootCmd.PersistentFlags().StringSlice("allowed-extensions", nil, "Allowed file extensions")
+	rootCmd.PersistentFlags().String("input-dir", "", "Directory to scan")
+	rootCmd.PersistentFlags().String("output-dir", "", "Output directory")
+	rootCmd.PersistentFlags().String("output-name", "", "Output file name")
+	rootCmd.PersistentFlags().StringSlice("allowed-extensions", nil, "Allowed file extensions (comma-separated)")
 	rootCmd.PersistentFlags().StringSlice("skip-dirs", nil, "Directories to skip")
+	rootCmd.PersistentFlags().Bool("include-cloc", false, "Include cloc output")
+	rootCmd.PersistentFlags().Bool("include-tree", false, "Include tree output")
 
+	// Bind to Viper
 	viper.BindPFlags(rootCmd.PersistentFlags())
 	viper.AutomaticEnv()
 }

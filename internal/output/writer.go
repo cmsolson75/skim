@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/cmsolson75/skim/internal/analyze"
 	"github.com/cmsolson75/skim/internal/config"
 	"github.com/cmsolson75/skim/internal/walker"
 )
@@ -29,6 +30,20 @@ func (s *Service) Write(files []walker.FileData) error {
 	}
 	defer f.Close()
 	w := bufio.NewWriter(f)
+	// Write root
+	fmt.Fprintf(w, "Project Root: %s\n\n", s.cfg.InputDir)
+	w.Flush()
+
+	if s.cfg.IncludeCloc {
+		fmt.Fprintln(w, "---- CLOC ----")
+		analyze.RunCloc(s.cfg.InputDir, w)
+		fmt.Fprintln(w)
+	}
+	if s.cfg.IncludeTree {
+		fmt.Fprintln(w, "---- TREE ----")
+		analyze.RunTree(s.cfg.InputDir, w)
+		fmt.Fprintln(w)
+	}
 	for _, file := range files {
 		fmt.Fprintf(w, "---- %s ----\n", file.Path)
 		for _, line := range file.Contents {
