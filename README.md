@@ -135,7 +135,8 @@ The tool generates a flat text file with:
 
 ## 🪪 License
 
-MIT License
+This project is licensed under the [MIT License](LICENSE).  
+You may use, modify, and distribute it freely for any purpose, including commercial use.
 
 ---
 
