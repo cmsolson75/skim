@@ -22,7 +22,7 @@ func LoadConfig() (*Config, error) {
 
 	setDefaults()
 
-	_ = viper.ReadInConfig() // optional
+	_ = viper.ReadInConfig()
 
 	cfg := &Config{
 		InputDir:    viper.GetString("input_dir"),
@@ -37,7 +37,7 @@ func LoadConfig() (*Config, error) {
 		return nil, fmt.Errorf("input_dir is required")
 	}
 	if cfg.OutputDir == "" {
-		cfg.OutputDir = "./out"
+		cfg.OutputDir = "./"
 	}
 	if cfg.OutputName == "" {
 		cfg.OutputName = "context.txt"
