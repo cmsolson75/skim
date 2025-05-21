@@ -8,6 +8,9 @@
 *.a
 *.so
 
+# System outputs
+context.txt
+
 # Dependency directories
 vendor/
 

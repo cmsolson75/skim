@@ -26,6 +26,7 @@ var rootCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
+		fmt.Println("Debug Message")
 		if val, err := cmd.Flags().GetString("input-dir"); err == nil && val != "" {
 			cfg.InputDir = val
 		}
