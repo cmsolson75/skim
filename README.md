@@ -99,8 +99,8 @@ skim \
 
 | Flag                   | Description                              |
 | ---------------------- | ---------------------------------------- |
-| `--input-dir`          | Directory to scan (default: `.`)         |
-| `--output-dir`         | Output directory (default: `./out`)      |
+| `--input-dir`          | Directory to scan (default: `./`)         |
+| `--output-dir`         | Output directory (default: `./`)      |
 | `--output-name`        | Output filename (default: `context.txt`) |
 | `--allowed-extensions` | Comma-separated list of extensions       |
 | `--skip-dirs`          | Comma-separated dirs to ignore           |
