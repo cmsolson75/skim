@@ -1,4 +1,7 @@
 # skim
+<p align="center">
+  <img src="assets/skim-logo.png" alt="Skim Logo" width="200"/>
+</p>
 
 **skim** is a configurable CLI tool that aggregates source code files into a single output, optimized for LLM ingestion, code review, or static analysis. It supports extension filtering, directory skipping, and optional inclusion of `cloc` and `tree` metadata.
 
